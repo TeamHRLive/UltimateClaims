@@ -260,6 +260,7 @@ public class EntityListeners implements Listener {
                     }
                     break;
                 case PRIMED_TNT:
+                case MINECART_TNT:
                     if (!claim.getClaimSettings().isEnabled(ClaimSetting.TNT)
                             || (powerCell.hasLocation() && powerCell.getLocation().equals(block.getLocation()))) {
                         event.blockList().remove(block);

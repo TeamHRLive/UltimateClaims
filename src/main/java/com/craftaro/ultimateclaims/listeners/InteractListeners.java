@@ -132,12 +132,19 @@ public class InteractListeners implements Listener {
         }
 
         switch (block.getType().name()) {
+            // Doors
             case "DARK_OAK_DOOR":
             case "ACACIA_DOOR":
             case "BIRCH_DOOR":
             case "JUNGLE_DOOR":
             case "OAK_DOOR":
             case "SPRUCE_DOOR":
+            case "CRIMSON_DOOR":
+            case "WARPED_DOOR":
+            case "MANGROVE_DOOR":
+            case "CHERRY_DOOR":
+            case "BAMBOO_DOOR":
+                // Trapdoors
             case "ACACIA_TRAPDOOR":
             case "BIRCH_TRAPDOOR":
             case "DARK_OAK_TRAPDOOR":
@@ -145,12 +152,24 @@ public class InteractListeners implements Listener {
             case "JUNGLE_TRAPDOOR":
             case "OAK_TRAPDOOR":
             case "SPRUCE_TRAPDOOR":
+            case "CRIMSON_TRAPDOOR":
+            case "WARPED_TRAPDOOR":
+            case "MANGROVE_TRAPDOOR":
+            case "CHERRY_TRAPDOOR":
+            case "BAMBOO_TRAPDOOR":
+                // Fence Gates
             case "OAK_FENCE_GATE":
             case "ACACIA_FENCE_GATE":
             case "BIRCH_FENCE_GATE":
             case "DARK_OAK_FENCE_GATE":
             case "JUNGLE_FENCE_GATE":
             case "SPRUCE_FENCE_GATE":
+            case "CRIMSON_FENCE_GATE":
+            case "WARPED_FENCE_GATE":
+            case "MANGROVE_FENCE_GATE":
+            case "CHERRY_FENCE_GATE":
+            case "BAMBOO_FENCE_GATE":
+                // Legacy values (for compatibility with older versions)
             case "WOODEN_DOOR":
             case "WOOD_DOOR":
             case "TRAP_DOOR":
@@ -160,6 +179,7 @@ public class InteractListeners implements Listener {
                 return false;
         }
     }
+
 
     private boolean isRedstone(Block block) {
         if (block == null) {
@@ -171,6 +191,7 @@ public class InteractListeners implements Listener {
             return false;
         }
         switch (material.get()) {
+            // Buttons
             case LEVER:
             case BIRCH_BUTTON:
             case ACACIA_BUTTON:
@@ -179,6 +200,12 @@ public class InteractListeners implements Listener {
             case OAK_BUTTON:
             case SPRUCE_BUTTON:
             case STONE_BUTTON:
+            case CRIMSON_BUTTON:
+            case WARPED_BUTTON:
+            case MANGROVE_BUTTON:
+            case CHERRY_BUTTON:
+            case BAMBOO_BUTTON:
+                // Pressure Plates
             case ACACIA_PRESSURE_PLATE:
             case BIRCH_PRESSURE_PLATE:
             case DARK_OAK_PRESSURE_PLATE:
@@ -188,6 +215,11 @@ public class InteractListeners implements Listener {
             case OAK_PRESSURE_PLATE:
             case SPRUCE_PRESSURE_PLATE:
             case STONE_PRESSURE_PLATE:
+            case CRIMSON_PRESSURE_PLATE:
+            case WARPED_PRESSURE_PLATE:
+            case MANGROVE_PRESSURE_PLATE:
+            case CHERRY_PRESSURE_PLATE:
+            case BAMBOO_PRESSURE_PLATE:
                 return true;
             default:
                 return false;

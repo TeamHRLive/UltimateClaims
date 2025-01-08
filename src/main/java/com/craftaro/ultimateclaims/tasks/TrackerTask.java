@@ -57,6 +57,7 @@ public class TrackerTask extends BukkitRunnable implements Listener {
                 }
                 member.setPresent(true);
 
+
                 if (claim.isBanned(player.getUniqueId()) && !player.hasPermission("ultimateclaims.bypass.ban")
                         || claim.isLocked() && claim.getMember(player).getRole() == ClaimRole.VISITOR && !player.hasPermission("ultimateclaims.bypass.lock")) {
                     toggleFlyOff(player);
