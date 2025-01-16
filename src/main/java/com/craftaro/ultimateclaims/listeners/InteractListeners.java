@@ -2,6 +2,7 @@ package com.craftaro.ultimateclaims.listeners;
 
 import com.craftaro.core.compatibility.CompatibleMaterial;
 import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
+import com.craftaro.third_party.org.jooq.Case;
 import com.craftaro.ultimateclaims.UltimateClaims;
 import com.craftaro.ultimateclaims.claim.Claim;
 import com.craftaro.ultimateclaims.claim.ClaimManager;
@@ -144,6 +145,7 @@ public class InteractListeners implements Listener {
             case "MANGROVE_DOOR":
             case "CHERRY_DOOR":
             case "BAMBOO_DOOR":
+            case "COPPER_DOOR":
                 // Trapdoors
             case "ACACIA_TRAPDOOR":
             case "BIRCH_TRAPDOOR":
@@ -157,6 +159,8 @@ public class InteractListeners implements Listener {
             case "MANGROVE_TRAPDOOR":
             case "CHERRY_TRAPDOOR":
             case "BAMBOO_TRAPDOOR":
+                case "COPPER_TRAPDOOR":
+
                 // Fence Gates
             case "OAK_FENCE_GATE":
             case "ACACIA_FENCE_GATE":
