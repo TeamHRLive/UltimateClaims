@@ -9,7 +9,6 @@ import com.songoda.ultimateclaims.member.ClaimMember;
 import com.songoda.ultimateclaims.member.ClaimRole;
 import com.songoda.ultimateclaims.settings.Settings;
 import com.songoda.ultimateclaims.utils.ClaimRegeneration;
-import org.bukkit.Chunk;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
