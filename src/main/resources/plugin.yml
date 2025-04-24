@@ -20,8 +20,9 @@ softdepend:
   - PlayerPoints
   - Slimefun
   - Vault
+  - FastAsyncWorldEdit
 
-author: Craftaro
+author: Songoda
 website: ${project.url}
 
 commands:
