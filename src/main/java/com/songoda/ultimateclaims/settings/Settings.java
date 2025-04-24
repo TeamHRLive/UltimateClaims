@@ -105,6 +105,10 @@ public class Settings {
             "Should third party plugin and command spawn be allowed while hostile mob spawning is disabled in claim settings?," +
                     "This will allow you to spawn pets and other entities that are not vanilla mobs.");
 
+    public static final ConfigSetting ENABLE_CLAIM_REGENERATION = new ConfigSetting(config, "Main.Enable Claim Regeneration", false,
+            "Should we enable the claim regeneration",
+            "when chunks are claimed/unclaimed?");
+
     public static final ConfigSetting DEFAULT_CLAIM_HOSTILE_MOB_SPAWN = new ConfigSetting(config, "Default Settings.Claim.Hostile Mob Spawn", true,
             "Should hostile mob spawning be enabled by default in new claims?");
 

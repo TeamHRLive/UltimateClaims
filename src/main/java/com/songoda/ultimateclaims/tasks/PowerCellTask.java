@@ -4,10 +4,14 @@ import com.songoda.ultimateclaims.UltimateClaims;
 import com.songoda.ultimateclaims.claim.Claim;
 import com.songoda.ultimateclaims.claim.ClaimDeleteReason;
 import com.songoda.ultimateclaims.claim.PowerCell;
+import com.songoda.ultimateclaims.claim.region.ClaimedChunk;
 import com.songoda.ultimateclaims.member.ClaimMember;
 import com.songoda.ultimateclaims.member.ClaimRole;
 import com.songoda.ultimateclaims.settings.Settings;
+import com.songoda.ultimateclaims.utils.ClaimRegeneration;
+import org.bukkit.Chunk;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ public class PowerCellTask extends BukkitRunnable {
         for (Claim claim : new ArrayList<>(plugin.getClaimManager().getRegisteredClaims())) {
             PowerCell powerCell = claim.getPowerCell();
             List<ClaimMember> members = claim.getOwnerAndMembers().stream()
-                    .filter(member -> member.getRole() != ClaimRole.VISITOR).collect(Collectors.toList());
+                    .filter(member -> member.getRole() != ClaimRole.VISITOR).collect(Collectors.toList());  //
             for (ClaimMember member : members) {
                 if (member.getPlayer().isOnline()) {
                     member.setPlayTime(member.getPlayTime() + (60 * 1000)); // Should be a var.
@@ -50,6 +54,9 @@ public class PowerCellTask extends BukkitRunnable {
                         this.dissolved(member);
                     }
                     this.dissolved(claim.getOwner());
+                    if (Settings.ENABLE_CLAIM_REGENERATION.getBoolean()) {
+                        regenerateClaimChunk(claim);
+                    }
                     claim.destroy(ClaimDeleteReason.POWERCELL_TIMEOUT);
                 } else if (tick == -1) {
                     for (ClaimMember member : members) {
@@ -63,9 +70,34 @@ public class PowerCellTask extends BukkitRunnable {
                     for (ClaimMember member : members) {
                         this.dissolved(member);
                     }
+                    if (Settings.ENABLE_CLAIM_REGENERATION.getBoolean()) {
+                        regenerateClaimChunk(claim);
+                    }
                     claim.destroy(ClaimDeleteReason.POWERCELL_TIMEOUT);
                 }
             }
+        }
+    }
+
+    private void regenerateClaimChunk(Claim claim) {
+        plugin.getLogger().warning("Starting regeneration for claim: " + claim.getName());
+
+        for (ClaimedChunk chunk : claim.getClaimedChunks()) {
+            World world = chunk.getChunk().getWorld();
+            int chunkX = chunk.getX();
+            int chunkZ = chunk.getZ();
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!world.isChunkLoaded(chunkX, chunkZ)) {
+                        world.loadChunk(chunkX, chunkZ);
+                    }
+
+                    plugin.getLogger().warning(String.format("Regenerating chunk at %s (x=%d, z=%d)", world.getName(), chunkX, chunkZ));
+                    ClaimRegeneration.regenerateChunk(world.getChunkAt(chunkX, chunkZ));
+                }
+            }.runTaskLater(plugin, 20L);
         }
     }
 

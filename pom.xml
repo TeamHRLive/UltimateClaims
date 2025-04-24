@@ -3,14 +3,14 @@
 
     <groupId>com.songoda</groupId>
     <artifactId>UltimateClaims</artifactId>
-    <version>3.1.0</version>
+    <version>3.1.1-SNAPSHOT</version>
 
     <name>UltimateClaims</name>
     <description>Claim land with this unique grief protection tool – Fill up your power cell and keep it supplied to keep your land protected</description>
     <url>https://songoda.com/product/ultimateclaims-14</url>
 
     <properties>
-        <songoda.coreVersion>3.9.1-SNAPSHOT</songoda.coreVersion>
+        <songoda.coreVersion>3.9.2-SNAPSHOT</songoda.coreVersion>
 
         <maven.compiler.release>8</maven.compiler.release>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -103,8 +103,8 @@
 
     <repositories>
         <repository>
-            <id>craftaro-minecraft-plugins</id>
-            <url>https://repo.craftaro.com/repository/minecraft-plugins/</url>
+            <id>songoda-minecraft-plugins</id>
+            <url>https://repo.songoda.com/repository/minecraft-plugins/</url>
         </repository>
 
         <repository>
@@ -143,7 +143,25 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+
+        <repository>
+            <id>enginehub</id>
+            <url>https://maven.enginehub.org/repo/</url>
+        </repository>
+
     </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.intellectualsites.bom</groupId>
+                <artifactId>bom-newest</artifactId>
+                <version>1.52</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -193,6 +211,24 @@
             <artifactId>api-itemsadder</artifactId>
             <version>3.6.1</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fastasyncworldedit</groupId>
+            <artifactId>FastAsyncWorldEdit-Core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fastasyncworldedit</groupId>
+            <artifactId>FastAsyncWorldEdit-Bukkit</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>FastAsyncWorldEdit-Core</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

@@ -101,6 +101,10 @@ public class InteractListeners implements Listener {
             return;
         }
 
+        if (event.getItem() != null && event.getItem().getType().isEdible() && event.getAction() == Action.RIGHT_CLICK_AIR) {
+            return;
+        }
+
         if (!claim.playerHasPerms(event.getPlayer(), ClaimPerm.INTERACT)) {
             this.plugin.getLocale().getMessage("event.general.nopermission").sendPrefixedMessage(event.getPlayer());
             event.setCancelled(true);
