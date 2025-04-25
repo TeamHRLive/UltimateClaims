@@ -106,7 +106,8 @@ public class Settings {
                     "This will allow you to spawn pets and other entities that are not vanilla mobs.");
 
     public static final ConfigSetting ENABLE_CLAIM_REGENERATION = new ConfigSetting(config, "Main.Enable Claim Regeneration", false,
-            "Should we enable the claim regeneration",
+            "Experimental Feature - Do not enable unless you know what you are doing. Requires FastAsyncWorldEdit.",
+            "Should we enable the claim regeneration when claim dissolves.",
             "when chunks are claimed/unclaimed?");
 
     public static final ConfigSetting DEFAULT_CLAIM_HOSTILE_MOB_SPAWN = new ConfigSetting(config, "Default Settings.Claim.Hostile Mob Spawn", true,
