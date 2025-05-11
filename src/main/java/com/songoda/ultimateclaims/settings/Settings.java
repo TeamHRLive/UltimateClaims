@@ -107,8 +107,7 @@ public class Settings {
 
     public static final ConfigSetting ENABLE_CLAIM_REGENERATION = new ConfigSetting(config, "Main.Enable Claim Regeneration", false,
             "Experimental Feature - Do not enable unless you know what you are doing. Requires FastAsyncWorldEdit.",
-            "Should we enable the claim regeneration when claim dissolves.",
-            "when chunks are claimed/unclaimed?");
+            "Should we enable the claim regeneration when claim dissolves naturally.");
 
     public static final ConfigSetting DEFAULT_CLAIM_HOSTILE_MOB_SPAWN = new ConfigSetting(config, "Default Settings.Claim.Hostile Mob Spawn", true,
             "Should hostile mob spawning be enabled by default in new claims?");
